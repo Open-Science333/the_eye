@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Eyes Shall Be Opened</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .countdown-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 50%, #d1d5db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: linear-gradient(145deg, #e5e7eb, #f9fafb);
+            border-radius: 15px;
+            padding: 25px 35px;
+            box-shadow: 
+                8px 8px 16px rgba(107, 114, 128, 0.2),
+                -8px -8px 16px rgba(255, 255, 255, 0.8),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                12px 12px 24px rgba(107, 114, 128, 0.25),
+                -12px -12px 24px rgba(255, 255, 255, 0.9);
+        }
+
+        .countdown-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4b5563 0%, #6b7280 50%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .eye-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+            filter: drop-shadow(0 10px 30px rgba(107, 114, 128, 0.3));
+        }
+
+        .eye-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Eye SVG Styling */
+        .metallic-eye {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 50%, #d1d5db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 
+                0 20px 60px rgba(107, 114, 128, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .headline {
+            font-size: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #4b5563 0%, #6b7280 50%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+
+        .content-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #4b5563;
+            text-align: justify;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #9ca3af, transparent);
+            margin: 40px auto;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Eye Blink Animation */
+        .eye-blink .upper-eyelid {
+            transform-origin: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .eye-blink .lower-eyelid {
+            transform-origin: center;
+            transition: transform 0.3s ease-out;
+        }
+
+        .eye-blink.blinking .upper-eyelid {
+            transform: translateY(50px);
+        }
+
+        .eye-blink.blinking .lower-eyelid {
+            transform: translateY(-50px);
+        }
+
+        .eye-blink .iris-group {
+            transition: opacity 0.2s ease-out;
+        }
+
+        .eye-blink.blinking .iris-group {
+            opacity: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .countdown-title {
+                font-size: 1.8rem;
+            }
+
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+
+            .headline {
+                font-size: 2rem;
+            }
+
+            .content-text {
+                font-size: 1rem;
+            }
+
+            .eye-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .main-content {
+                padding: 40px 25px;
+            }
+        }
+
+        /* Shimmer Effect */
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        .shimmer {
+            background: linear-gradient(
+                90deg,
+                #6b7280 0%,
+                #9ca3af 40%,
+                #d1d5db 50%,
+                #9ca3af 60%,
+                #6b7280 100%
+            );
+            background-size: 1000px 100%;
+            animation: shimmer 3s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Countdown Section -->
+        <div class="countdown-section">
+            <h1 class="countdown-title shimmer">Your Eyes Shall Be Opened</h1>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">7</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="eye-logo pulse">
+                <svg class="metallic-eye eye-blink" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#9ca3af;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#d1d5db;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#6b7280;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="irisGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4b5563;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#6b7280;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#374151;stop-opacity:1" />
+                        </linearGradient>
+                        <radialGradient id="pupilGradient">
+                            <stop offset="0%" style="stop-color:#1f2937;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+                        </radialGradient>
+                        <filter id="shadow">
+                            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+                        </filter>
+                        <clipPath id="eyeClip">
+                            <ellipse cx="100" cy="100" rx="80" ry="50"/>
+                        </clipPath>
+                    </defs>
+                    
+                    <!-- Eye Background -->
+                    <ellipse cx="100" cy="100" rx="80" ry="50" fill="url(#metalGradient)" filter="url(#shadow)"/>
+                    
+                    <!-- Iris and Pupil Group (fades during blink) -->
+                    <g class="iris-group" clip-path="url(#eyeClip)">
+                        <!-- Iris -->
+                        <circle cx="100" cy="100" r="35" fill="url(#irisGradient)"/>
+                        
+                        <!-- Iris Details -->
+                        <circle cx="100" cy="100" r="35" fill="none" stroke="#9ca3af" stroke-width="0.5" opacity="0.3"/>
+                        <circle cx="100" cy="100" r="28" fill="none" stroke="#d1d5db" stroke-width="0.5" opacity="0.2"/>
+                        
+                        <!-- Pupil -->
+                        <circle cx="100" cy="100" r="15" fill="url(#pupilGradient)"/>
+                        
+                        <!-- Light Reflection -->
+                        <circle cx="92" cy="92" r="6" fill="#ffffff" opacity="0.8"/>
+                        <circle cx="96" cy="96" r="3" fill="#ffffff" opacity="0.6"/>
+                    </g>
+                    
+                    <!-- Upper Eyelid -->
+                    <g class="upper-eyelid">
+                        <path d="M 20,100 Q 100,50 180,100 L 180,20 Q 100,20 20,20 Z" 
+                              fill="url(#metalGradient)" opacity="0.95"/>
+                        <path d="M 20,100 Q 100,50 180,100" 
+                              fill="none" stroke="#6b7280" stroke-width="3"/>
+                    </g>
+                    
+                    <!-- Lower Eyelid -->
+                    <g class="lower-eyelid">
+                        <path d="M 20,100 Q 100,150 180,100 L 180,180 Q 100,180 20,180 Z" 
+                              fill="url(#metalGradient)" opacity="0.95"/>
+                        <path d="M 20,100 Q 100,150 180,100" 
+                              fill="none" stroke="#6b7280" stroke-width="3"/>
+                    </g>
+                </svg>
+            </div>
+            <p class="tagline">The Truth Awaits</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="headline">A New Dawn of Revelation</h2>
+            <div class="divider"></div>
+            <p class="content-text">
+                In seven days, the veil will be lifted. What has been hidden in shadow shall emerge into the light. 
+                The truth you've been seeking, the answers that have eluded you, the mysteries that have haunted 
+                your thoughts—all will be revealed.
+            </p>
+            <p class="content-text">
+                We stand at the precipice of understanding, where knowledge and revelation converge. The countdown 
+                has begun, and with each passing moment, we draw closer to enlightenment. Prepare yourself for 
+                what is to come, for once your eyes are opened, they can never be closed again.
+            </p>
+            <p class="content-text">
+                This is not merely an announcement—it is a promise. A commitment to truth, to clarity, to the 
+                unveiling of what matters most. The world as you know it is about to change, and you are invited 
+                to witness this transformation firsthand.
+            </p>
+            <div class="divider"></div>
+            <p class="content-text" style="text-align: center; font-style: italic; font-size: 1.1rem;">
+                "For nothing is hidden that will not be made manifest, nor is anything secret that will not be known."
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to - February 18, 2026 at dawn (6:00 AM)
+        const countDownDate = new Date('February 18, 2026 06:00:00');
+        const countDownTime = countDownDate.getTime();
+
+        // Update the countdown every 1 second
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownTime - now;
+
+            // Time calculations
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
+            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
+
+            // If the countdown is finished
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+                
+                // Optional: Display a message when countdown ends
+                document.querySelector('.countdown-title').innerHTML = "THE TIME HAS COME";
+            }
+        }, 1000);
+
+        // Add subtle parallax effect on mouse move
+        document.addEventListener('mousemove', function(e) {
+            const eye = document.querySelector('.eye-logo');
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            
+            eye.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        // Eye Blinking Animation
+        function blinkEye() {
+            const eyeSvg = document.querySelector('.eye-blink');
+            
+            // Add blinking class
+            eyeSvg.classList.add('blinking');
+            
+            // Remove class after blink duration
+            setTimeout(() => {
+                eyeSvg.classList.remove('blinking');
+            }, 200);
+        }
+
+        // Blink at random intervals between 2-6 seconds
+        function scheduleNextBlink() {
+            const randomInterval = Math.random() * 4000 + 2000; // 2-6 seconds
+            setTimeout(() => {
+                blinkEye();
+                scheduleNextBlink();
+            }, randomInterval);
+        }
+
+        // Start the blinking cycle
+        scheduleNextBlink();
+
+        // Also blink when user hovers over the eye
+        document.querySelector('.eye-logo').addEventListener('mouseenter', function() {
+            blinkEye();
+        });
+    </script>
+</body>
+</html>
